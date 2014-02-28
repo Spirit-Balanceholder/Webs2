@@ -1,0 +1,17 @@
+body{
+	background-color:#f0fff0
+}
+
+.mainmenu ul li a {
+	background-image:url("../img/MainMenu.jpg");
+	border-width:0px;
+}
+
+.mainmenu ul li a:hover {
+	background-image:url("../img/MMHighlight.jpg");
+}
+
+
+.mainmenu a {
+	color:#000000;	
+}
