@@ -10,20 +10,17 @@ include 'Constants.php';
 	?>
 <body>
 	<?php 
-		include 'Components/Header.php'
+		include 'Components/Header.php';
 	?>
-			
-			<!-- Most changed will occur here; in the body -->
-			<div class = "body">
-				<div class = "mainbody">
-				
-				
-				
-				</div>
-			</div>
-			
-			<?php include 'Components/Footer.php';?>
-
+	<div class = "mainbody">
+		
+		
+		
+	</div>
+	
+	<?php 
+		include 'Components/Footer.php';
+	?>
 </body>
 
 </html>

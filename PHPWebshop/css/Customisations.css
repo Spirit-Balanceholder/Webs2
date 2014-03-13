@@ -2,6 +2,10 @@ body{
 	background-color:#f0fff0
 }
 
+.mainbody{
+	min-height:300px;
+}
+
 .mainmenu ul li a {
 	background-image:url("../img/MainMenu.jpg");
 	border-width:0px;
