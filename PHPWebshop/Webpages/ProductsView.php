@@ -11,31 +11,24 @@
 		<div class = "container">
 			<div class = "mainbody">
 				
-				<!-- Dummy -->
+				<?php 
+				include_once $_SERVER ['DOCUMENT_ROOT'] . '/Classes/InfoControllers/Product.php';
+				$productInfo = new Product();
+				$result = $productInfo->getAllProducts();
 				
-				<div class = "ProductThumb">
+				while($row = $result->fetch_assoc())
+				{
+					echo '<div class = "ProductThumb">
 					<a class="thumbnail" href = "Product.php">
-					<img src="img/DummyProduct.jpg">
-					Computah
-					</a>
-				</div>
-				
-				<div class = "ProductThumb">
-					<a class="thumbnail" href = "Product.php">
-					<img src="img/DummyProduct.jpg">
-					Computah
-					</a>
-				</div>
-				
-				<div class = "ProductThumb">
-					<a class="thumbnail" href = "Product.php">
-					<img src="img/DummyProduct.jpg">
-					Computah
-					</a>
-				</div>
-				
-				<!-- End Dummy -->
-				
+					<img src=http://'.$_SERVER['SERVER_NAME'].':'
+					.$_SERVER['SERVER_PORT'].dirname($_SERVER['REQUEST_URI'])
+					.$row['Image_path'].'></img>'
+					.$row['Name']
+					."<br>".$row['Description']
+					.'</a>'
+					.'</div>';
+				}
+				?>
 			</div>
 		</div>
 		<?php include 'Components/Footer.php';?>
