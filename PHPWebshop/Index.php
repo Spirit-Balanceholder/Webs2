@@ -21,20 +21,6 @@
 				<div class="col-md-4">
 					<div class="panel panel-success">
 						<div class="panel-heading">
-							<h3>Weekly Offer</h3>
-						</div>
-						<div class="panel-body">
-							<a class="thumbnail" href = "Webpages/Product.php">
-							<img src="Webpages/img/DummyProduct.jpg">
-							Computah
-							</a>
-						</div>
-					</div>				
-				</div>
-				
-				<div class="col-md-4">
-					<div class="panel panel-success">
-						<div class="panel-heading">
 							<h3>Most Popular</h3>
 						</div>
 						<div class="panel-body">
@@ -49,7 +35,21 @@
 				<div class="col-md-4">
 					<div class="panel panel-success">
 						<div class="panel-heading">
-							<h3>Newest Addition</h3>
+							<h3 style="text-align: center;">Weekly Offer</h3>
+						</div>
+						<div class="panel-body">
+							<a class="thumbnail" href = "Webpages/Product.php">
+							<img src="Webpages/img/DummyProduct.jpg">
+							Computah
+							</a>
+						</div>
+					</div>				
+				</div>
+				
+				<div class="col-md-4">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 style="text-align: right;">Newest Addition</h3>
 						</div>
 						<div class="panel-body">
 							<a class="thumbnail" href = "Webpages/Product.php">

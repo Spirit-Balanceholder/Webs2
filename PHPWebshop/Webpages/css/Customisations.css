@@ -3,7 +3,6 @@ body{
 }
 
 h1{
-	text-align: center;
 	font-size: 28px;
 	font-family:BlackChancery;
 	src: url(/Webpages/fonts/BLKCHCRY.TTF);
@@ -12,7 +11,6 @@ h1{
 }
 
 h2{
-	text-align: center;
 	font-size: 20px;
 	font-family:BlackChancery;
 	src: url(/Webpages/fonts/BLKCHCRY.TTF);
@@ -21,11 +19,10 @@ h2{
 }
 
 h3{
-	text-align: center;
 	font-size: 16px;
 	font-family:BlackChancery;
 	src: url(/Webpages/fonts/BLKCHCRY.TTF);
-	margin-top: 5px;
+	margin: 0 5px;
 	text-shadow:2px 2px 2px #88bb88;
 }
 
@@ -35,7 +32,7 @@ h3{
 }
 
 .mainmenu{
-	margin-left:3%;
+	margin-left:1%;
 }
 
 .mainbody{
@@ -47,10 +44,14 @@ h3{
 .mainmenu ul li a {
 	background-image:url("../img/MainMenu.jpg");
 	border-width:0px;
+	text-shadow:2px 2px 2px #336633;
+	margin-right: 5px;
+	box-shadow:0px -1px 2px #333333;
 }
 
 .mainmenu ul li a:hover {
 	background-image:url("../img/MMHighlight.jpg");
+	box-shadow:0px -1px 6px #ddffdd;
 }
 
 .admin-menu ul li a: {
@@ -128,4 +129,5 @@ form table tr td:first-child{
 
 .Welcome{
 	margin-bottom: 50px;
+	text-align: center;
 }
