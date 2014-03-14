@@ -1,9 +1,19 @@
 body{
-	background-color:#f0fff0
+	background-color:#ffffff
+}
+
+.wrap{
+	
+}
+
+.mainmenu{
+	margin-left:3%;
 }
 
 .mainbody{
 	min-height:300px;
+	background-color:#f0fff0;
+	padding:5px 15px 15px 15px;
 }
 
 .mainmenu ul li a {
@@ -15,7 +25,43 @@ body{
 	background-image:url("../img/MMHighlight.jpg");
 }
 
+.header {
+	padding-top:72px;
+	height:113px;
+	background-image:url("../img/Header-sm.jpg");
+}
+
+@media (min-width: 350px) {
+
+	
+	.header {
+	padding-top:105px;
+	height:145px;
+	background-image:url("../img/Header-xl.jpg");
+	}	
+}
+
+.ProductThumb{
+	margin: 5px;
+	float:left;
+	max-width: 200px;
+	max-height: 200px;
+}
+
+.thumbnail{
+	text-align:center
+}
 
 .mainmenu a {
 	color:#000000;	
+}
+
+form table tr td{
+	padding-top: 5px;
+}
+
+form table tr td:first-child{
+	width:40%;
+	padding-right: 5px;
+	text-align: right;
 }
