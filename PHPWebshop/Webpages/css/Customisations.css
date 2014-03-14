@@ -25,19 +25,37 @@ body{
 	background-image:url("../img/MMHighlight.jpg");
 }
 
+.admin-menu ul li a: {
+	
+}
+
 .header {
 	padding-top:72px;
 	height:113px;
 	background-image:url("../img/Header-sm.jpg");
+	background-size: 100% auto;
+	background-repeat:no-repeat;
 }
 
-@media (min-width: 350px) {
+.mainmenu a {
+	color:#FFFFFF;	
+	font-size: 15px;
+	font-family:BlackChancery;
+}
 
+@media (min-width: 400px) {
+
+	.mainmenu a {
+	color:#FFFFFF;	
+	font-size: 18px;
+	font-family:BlackChancery;
+	}
 	
 	.header {
-	padding-top:105px;
-	height:145px;
+	padding-top:96px;
+	height:142px;
 	background-image:url("../img/Header-xl.jpg");
+	background-size: auto 142px;
 	}	
 }
 
@@ -50,10 +68,6 @@ body{
 
 .thumbnail{
 	text-align:center
-}
-
-.mainmenu a {
-	color:#000000;	
 }
 
 form table tr td{

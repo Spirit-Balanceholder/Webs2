@@ -22,8 +22,8 @@
 						<td><input class="form-control" name="Password" type="Password" required /></td>
 					</tr>
 					<tr>
-					<td></td>
-					<td><input class="btn btn-default" type="submit" value="Login"></td>
+						<td></td>
+						<td><input class="btn btn-default" type="submit" value="Login"></td>
 					</tr>
 				</table>
 			</form>
