@@ -8,7 +8,7 @@
 	<?php 
 		include 'Components/Header.php'
 	?>
-		<div class = "body">
+		<div class = "container">
 			<div class = "mainbody">
 				
 				

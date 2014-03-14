@@ -10,7 +10,7 @@
 		include 'Components/Header.php'
 	?>
 		<!-- Most changed will occur here; in the body -->
-		<div class = "body">
+		<div class = "container">
 			<div class = "mainbody">
 				
 				<h2>About</h2>

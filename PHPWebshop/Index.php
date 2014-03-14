@@ -1,25 +1,22 @@
-<?php 	
-include 'Constants.php'; 
-?>
-
+<!DOCTYPE html>
 <html>
 <head>
-</head>
 	<?php 
-	include 'Components/htmlHead.php';
+	include 'Webpages/Components/htmlHead.php';
 	?>
+</head>
 <body>
 	<?php 
-		include 'Components/Header.php';
+		include 'Webpages/Components/Header.php';
 	?>
-	<div class = "mainbody">
+	<div class = "wrap container">
+		<div class="mainbody">
 		
 		
-		
+		</div>
 	</div>
-	
 	<?php 
-		include 'Components/Footer.php';
+		include 'Webpages/Components/Footer.php';
 	?>
 </body>
 

@@ -8,18 +8,30 @@
 	<?php 
 		include 'Components/Header.php'
 	?>
-		<div class = "body">
+		<div class = "container">
 			<div class = "mainbody">
 				
 				<!-- Dummy -->
 				
-				<div class = "ProductIco">
-					<a href = "Product.php">
-					<div class = "ProductBtn">
-					</div>
-					</a>
+				<div class = "ProductThumb">
+					<a class="thumbnail" href = "Product.php">
 					<img src="img/DummyProduct.jpg">
+					Computah
+					</a>
+				</div>
 				
+				<div class = "ProductThumb">
+					<a class="thumbnail" href = "Product.php">
+					<img src="img/DummyProduct.jpg">
+					Computah
+					</a>
+				</div>
+				
+				<div class = "ProductThumb">
+					<a class="thumbnail" href = "Product.php">
+					<img src="img/DummyProduct.jpg">
+					Computah
+					</a>
 				</div>
 				
 				<!-- End Dummy -->
