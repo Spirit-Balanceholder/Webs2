@@ -1,30 +1,56 @@
 <?php
-include_once $_SERVER ['DOCUMENT_ROOT'] . '/Classes/DatabaseConnectie/config.php';
+/**
+ * 
+ */
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Classes/DatabaseConnectie/Config.php');
+
 class Database
 {
 	// hierin komen de select, delete, update functions
 	public $con;
 	private $result = array ();
 	// databases.aii.avans.nl:3306/
-	public $db_host = 'databases.aii.avans.nl:3306';
-	public $db_user = 'mjong12';
-	public $db_pass = '13795';
-	public $db_name = "mjong12_db";
+	
+	public $db_host;
+	public $db_user;
+	public $db_pass;
+	public $db_name;
 	private $where = null;
 	private $query = null;
 	private $limit = null;
 	private $groupby = null;
 	private $DISTINCT = false;
 	
+	function __construct(){
+		$config = new Config();
+		
+		$db_host = $config->db_host;
+		$db_user = $config->db_user;
+		$db_pass = $config->db_pass;
+		$db_name = $config->db_name;
+		
+		$this->connect ();
+	}
+	
 	/**
 	 * Create a saver qrry to execute on the database (dit ga ik nog uitwerken)
-	 * 
-	 * @param unknown $qry        	
+	 * @param unknown $qry
 	 * @return unknown
 	 */
-	function __construct()
+	function InjectionProtection($qry)
 	{
-		$this->connect ();
+		// lastig om te zeggen soms, aangezien in een blok miss wel drop voorkomt. 
+		// maar -- is wel op te lossen door een andere unicode
+		// dit doen met: (--)  (DROP       DATABASE)  (DELETE FROM)
+		
+		//foreach ding dat er niet in mag voorkomen,
+		//en dan daarin dit onderste loopje
+		while(strpos($qry,'DROP DATABASE') !== false)
+		{
+			//replace dit woord met niks, zolang het maar blijftr voorkomen
+		}
+		
+		return $qry;
 	}
 	
 	/**
@@ -37,6 +63,7 @@ class Database
 		// include 'MysqlConnectie.php';
 		if (! $this->con)
 		{
+			
 			$myconn = new mysqli ( $this->db_host, $this->db_user, $this->db_pass, $this->db_name );
 			
 			if ($myconn->connect_errno != 0)
@@ -59,11 +86,10 @@ class Database
 	{
 		if ($this->con)
 		{
-			if (! $this->con->errno == "0")
+			if (!$this->con->errno === "0")
 			{
-				echo " <br>";
-				echo "Error: " . $this->con->errno . ": " . $this->con->error . " <br>";
-				echo "<br>qry runned while error: " . $this->getQuery () . " <br>";
+				echo "Error: " . $this->con->errno . ": " . $this->con->error;
+				echo "<br>qry runned while error: " . $this->getQuery ();
 			}
 			$this->con->close ();
 		}
@@ -101,24 +127,24 @@ class Database
 	 */
 	public function select($table, $rows = '*', $order = null)
 	{
-		if ($this->DISTINCT)
+		if($this->DISTINCT)
 			$this->query = 'SELECT DISTINCT ' . $rows . ' FROM ' . $table;
-		else
+		else 
 			$this->query = 'SELECT ' . $rows . ' FROM ' . $table;
-			// Where
+		//Where
 		if ($this->where != null)
-			$this->query .= $this->where;
-			// Order by
+			$this->query .= $this->where; 
+		//Order by
 		if ($order != null)
 			$this->query .= ' ORDER BY ' . $order;
-			// group by
+		//group by
 		if ($this->groupby != null)
 			$this->query .= $this->groupby;
-			// Limit
+		//Limit
 		if ($this->limit != null)
 			$this->query .= $this->limit;
-			// uitvoeren
-			// echo $this->query;
+		//uitvoeren
+		//echo $this->query;
 		$resultSet = $this->con->query ( $this->query );
 		//
 		$this->result = $resultSet;
@@ -154,14 +180,14 @@ class Database
 		{
 			if (is_string ( $values [$i] ))
 			{
-				if (strlen ( $values [$i] ) > 0)
-				{
+				if(strlen($values [$i]) > 0){
 					$values [$i] = '"' . $values [$i] . '"';
-				} else
-				{
+				} else {
 					$values [$i] = 'NULL';
 				}
+			
 			}
+			
 		}
 		$values = implode ( ',', $values );
 		$insert .= ' VALUES (' . $values . ')';
@@ -192,16 +218,16 @@ class Database
 	{
 		if ($this->where == null)
 		{
-			return;
+			$delete = 'DELETE ' . $table;
 		} else
 		{
 			
 			$delete = 'DELETE FROM ' . $table . $this->where;
 		}
-		// echo $delete;
+		//echo $delete;
 		$this->query = $delete;
 		$del = $this->con->query ( $delete ); // @mysqli_query ( $delete );
-		                                      // echo $del;
+		//echo $del;
 		$this->disconnect ();
 		return $del;
 	}
@@ -235,7 +261,7 @@ class Database
 		}
 		
 		$update .= $this->where;
-		
+	
 		$this->query = $update;
 		$query = $this->con->query ( $update );
 		$this->disconnect ();
@@ -250,39 +276,16 @@ class Database
 	{
 		return $Rowcount;
 	}
-	
-	/**
-	 * 
-	 * @param unknown $_field
-	 * Veld naam vanuit de database
-	 * @param unknown $_value
-	 * @param string $_AndOr
-	 * @param string $_OperatorNot
-	 */
-	public function AddWhere($_field, $_value, $_AndOr = 'and', $_OperatorNot = false)
+	public function AddWhere($_field, $_value, $_AndOr = 'and')
 	{
-		$_Operator = " = ";
-		if ($_OperatorNot)
-		{
-			$_Operator = " <> ";
-		}
 		if (empty ( $_value ))
 			return;
 		
 		if (empty ( $this->where ))
-			$this->where = " where " . $_field . " " . $_Operator . " '" . $_value . "'";
+			$this->where = " where " . $_field . " = '" . $_value . "'";
 		else
-			$this->where .= ' ' . $_AndOr . ' ' . $_field ." ". $_Operator . " '" . $_value . "'";
+			$this->where .= ' ' . $_AndOr . ' ' . $_field . " = '" . $_value . "'";
 	}
-	
-	public function AddisDeleted()
-	{
-		if (empty ( $this->where ))
-			$this->where = " where isDeleted = true ";
-		else
-			$this->where .= " and isDeleted = true ";
-	}
-	
 	public function AddLike($_field, $_value, $_AndOr = 'and')
 	{
 		if (empty ( $_value ))
@@ -293,30 +296,33 @@ class Database
 		else
 			$this->where .= ' ' . $_AndOr . ' ' . $_field . " like '%" . $_value . "%'";
 	}
-	public function AddLimit($_startAt, $_HowMuch)
+	public function AddLimit($_startAt,$_HowMuch)
 	{
 		if (empty ( $_startAt ) || empty ( $_HowMuch ))
 			return;
-		
-		$this->limit = " LIMIT " . $_startAt . "," . $_HowMuch . " ";
+	
+		$this->limit = " LIMIT ".$_startAt.",".$_HowMuch . " ";
+	
 	}
+	
 	public function AddGroupby($_ColumnName)
 	{
 		if (empty ( $_ColumnName ))
 			return;
-		
-		$this->groupby = " GROUP BY " . $_ColumnName . " ";
+	
+		$this->groupby = " GROUP BY ".$_ColumnName. " ";
+	
 	}
-	public function useDistinct($bUse)
+	public function useDistinct ($bUse)
 	{
-		$this->DISTINCT = $bUse;
+		$this->DISTINCT =$bUse;
 	}
 	public function AddWhereCustom($_where)
 	{
 		if (empty ( $_where ))
 			return;
-		
-		$this->where = " " . $_where;
+	
+		$this->where = " ".$_where;
 	}
 	
 	/**
@@ -324,6 +330,7 @@ class Database
 	 */
 	public function getQuery()
 	{
+		
 		return $this->query;
 	}
 	
@@ -332,7 +339,7 @@ class Database
 	 */
 	public function printQuery()
 	{
-		echo "Print Querry: " . $this->query;
+		echo "Print Querry: ".$this->query;
 		//
 	}
 }
