@@ -19,7 +19,7 @@
 				while($row = $result->fetch_assoc())
 				{
 					echo '<div class = "ProductThumb">
-					<a class="thumbnail" href = "Product.php">
+					<a class="thumbnail" href = "Product.php?product_id='.$row['idProduct'].'">
 					<img src=http://'.$_SERVER['SERVER_NAME'].':'
 					.$_SERVER['SERVER_PORT'].dirname($_SERVER['REQUEST_URI'])
 					.$row['Image_path'].'></img>'
