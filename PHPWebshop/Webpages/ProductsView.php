@@ -24,7 +24,7 @@
 					.$_SERVER['SERVER_PORT'].dirname($_SERVER['REQUEST_URI'])
 					.$row['Image_path'].'></img>'
 					.$row['Name']
-					."<br>".$row['Description']
+					."<br>".$row['ShortDescription']
 					.'</a>'
 					.'</div>';
 				}
