@@ -9,7 +9,7 @@
 		include 'Components/Header.php'
 	?>
 		<div class = "container">
-			<div class = "mainbody">
+			<div class = "mainbody product-body">
 				
 				<?php
 				$prodID = $_GET['product_id'];
@@ -19,15 +19,17 @@
 				$result = $productInfo->getProductById($prodID);
 				
 				$display = $result->fetch_assoc(); //gebruik display om data van het product te displayen
-				echo "Name: <br><b>".$display['Name']."</b><br><br>"; //example
+				echo "<h2>".$display['Name']."</h2>"; //example
 				
 				?>	
 					
 				<?php 
-				echo "Description: <br>".$display['LongDescription']."<br><br>";
-				echo '<img src=http://'.$_SERVER['SERVER_NAME'].':'
-					.$_SERVER['SERVER_PORT'].dirname($_SERVER['REQUEST_URI'])
-					.$display['Image_path'].'></img><br><br>'
+				echo "<div class='product-desc'>";
+				echo '<div class="product-img"><img src=http://'.$_SERVER['SERVER_NAME'].':'
+				.$_SERVER['SERVER_PORT'].dirname($_SERVER['REQUEST_URI'])
+				.$display['Image_path'].'></img></div>';
+				include "testtext.php";
+				echo $display['LongDescription'].'</div>';
 				
 				/*
 				 * simpel test while loopje
