@@ -2,6 +2,12 @@ body{
 	background-color:#ffffff
 }
 
+@font-face
+{
+font-family:BlackChancery;
+src: url(/Webpages/fonts/BLKCHCRY.TTF);
+}
+
 h1{
 	font-size: 28px;
 	font-family:BlackChancery;
@@ -13,7 +19,6 @@ h1{
 h2{
 	font-size: 20px;
 	font-family:BlackChancery;
-	src: url(/Webpages/fonts/BLKCHCRY.TTF);
 	margin-top: 5px;
 	text-shadow:2px 2px 2px #88bb88;
 }
