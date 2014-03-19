@@ -20,9 +20,9 @@
 				{
 					echo '<div class = "ProductThumb">
 					<a class="thumbnail" href = "Product.php?product_id='.$row['idProduct'].'">
-					<img src=http://'.$_SERVER['SERVER_NAME'].':'
+					<div class="imgcontain"><img src=http://'.$_SERVER['SERVER_NAME'].':'
 					.$_SERVER['SERVER_PORT'].dirname($_SERVER['REQUEST_URI'])
-					.$row['Image_path'].'></img>'
+					.$row['Image_path'].'></img></div>'
 					.$row['Name']
 					."<br>".$row['ShortDescription']
 					.'</a>'
