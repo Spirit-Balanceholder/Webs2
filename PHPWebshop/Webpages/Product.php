@@ -24,12 +24,12 @@
 				?>	
 					
 				<?php 
-				echo "<div class='product-desc'>";
-				echo '<div class="product-img"><img src=http://'.$_SERVER['SERVER_NAME'].':'
-				.$_SERVER['SERVER_PORT'].dirname($_SERVER['REQUEST_URI'])
-				.$display['Image_path'].'></img></div>';
+				echo "<table class='product-info'><tr><td>";
 				include "testtext.php";
 				echo $display['LongDescription'].'</div>';
+				echo '</td><td><div class="product-img"><img src=http://'.$_SERVER['SERVER_NAME'].':'
+				.$_SERVER['SERVER_PORT'].dirname($_SERVER['REQUEST_URI'])
+				.$display['Image_path'].'></img></div></td></tr><table>';
 				
 				/*
 				 * simpel test while loopje

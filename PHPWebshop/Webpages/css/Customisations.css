@@ -177,8 +177,13 @@ form table tr td:first-child{
 	box-shadow: 0px 0px 8px #000000;
 }
 
+.product-info td{
+	vertical-align:top;
+}
+
 .product-desc{
 	float:left;	
+	position:relative;
 }
 
 .product-desc p{
@@ -187,7 +192,11 @@ form table tr td:first-child{
 
 .product-desc-table{
 	float:left;
-	width:80%;
+}
+
+.product-desc-table td:first-child{
+	text-align:right;
+	min-width:200px;
 }
 
 textarea{
